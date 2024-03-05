@@ -38,3 +38,19 @@ declined	    0
 
 ### Exercici 4
 Des de recursos humans et sol·liciten eliminar la columna "pan" de la taula credit_*card. Recorda mostrar el canvi realitzat.
+
+
+## Nivell 2
+
+
+### Exercici 1
+- Elimina de la taula transaction el registre amb ID 02C6201E-D90A-1859-B4EE-88D2986D3B02 de la base de dades
+
+
+### Exercici 2
+- El departament de Recursos Humans ha identificat un error en el número de compte de l'usuari amb ID CcU-2938. 
+- Es requereix actualitzar la informació ingressada en l'IBAN. La informació que ha de mostrar-se per a aquest registre és: R323456312213576817699999 . Recorda mostrar que el canvi es va realitzar.
+
+
+### Exercici 3
+Filtra la vista VistaMarketing per a mostrar només les companyies que tenen el seu país de residència en "Germany"
