@@ -24,6 +24,7 @@ El departament de Recursos Humans ha identificat un error en el número de compt
 
 ### Exercici 3
 En la taula "transaction" ingressa un nou usuari amb la següent informació:
+
 ```
 Id	            108B1D1D-5B23-A76C-55EF-C568E49A99DD
 credit_card_id	CcU-9999
