@@ -48,9 +48,14 @@ Des de recursos humans et sol·liciten eliminar la columna "pan" de la taula cre
 
 
 ### Exercici 2
-- El departament de Recursos Humans ha identificat un error en el número de compte de l'usuari amb ID CcU-2938. 
-- Es requereix actualitzar la informació ingressada en l'IBAN. La informació que ha de mostrar-se per a aquest registre és: R323456312213576817699999 . Recorda mostrar que el canvi es va realitzar.
+ La secció de màrqueting desitja tenir accés a informació específica per a realitzar anàlisi i estratègies efectives. S'ha sol·licitat crear una vista que proporcioni detalls clau sobre les companyies i les seves transaccions. Serà necessària que creïs una vista anomenada VistaMarketing que contingui la següent informació: Nom de la companyia. Telèfon de contacte. País de residència. Mitjana de compra realitzat per cada companyia. Presenta la vista creada, ordenant les dades de major a menor mitjana de compra 
 
 
 ### Exercici 3
 Filtra la vista VistaMarketing per a mostrar només les companyies que tenen el seu país de residència en "Germany"
+
+## Nivell 3
+
+# Exercici 1
+
+La setmana vinent tindràs una nova reunió amb els gerents de màrqueting. Un company del teu equip va realitzar modificacions en la base de dades, però no recorda com les va realitzar. Et demana que l'ajudis a deixar els comandos executats per a obtenir les següents modificacions (s'espera que realitzin 6 canvis):
