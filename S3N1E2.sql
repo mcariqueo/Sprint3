@@ -1,4 +1,5 @@
 ## Exercici 2
+
 /* El departament de Recursos Humans ha identificat un error en el número de compte de l'usuari amb el:
 IBAN CcU-2938. 
 Es requereix actualitzar la informació que identifica un compte bancari a nivell internacional 
@@ -56,7 +57,7 @@ alter table credit_card drop column pan;
 SELECT * FROM credit_card;
 
 ########################################################################################
-########################################################################################
+######################     NIVEL 2      ################################################
 ########################################################################################
 # Sprint 3 - Nivel 2
 
@@ -74,7 +75,6 @@ where id ="02C6201E-D90A-1859-B4EE-88D2986D3B02";
 DELETE FROM user WHERE id = (SELECT user_id FROM transaction WHERE id = '02C6201E-D90A-1859-B4EE-88D2986D3B02');
 DELETE FROM transaction WHERE id = '02C6201E-D90A-1859-B4EE-88D2986D3B02';
 
-
 # Exercici 2
 /* Crear una vista llamada: VistaMarketing*/
 CREATE VIEW VistaMarketing AS 
@@ -90,6 +90,64 @@ SELECT * FROM VistaMarketing;
 
 # Exercici 3
 /*Filtra la vista VistaMarketing per a mostrar només les companyies que tenen el seu país de residència en "Germany"*/
-
 SELECT * FROM VistaMarketing
 WHERE country = 'Germany';
+
+
+
+
+SHOW CREATE TABLE company;
+SHOW CREATE TABLE credit_card;
+SHOW CREATE TABLE transaction;
+SHOW CREATE TABLE user;
+
+CREATE TABLE `company` (
+  `id` varchar(15) NOT NULL,
+  `company_name` varchar(255) DEFAULT NULL,
+  `phone` varchar(15) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `country` varchar(100) DEFAULT NULL,
+  `website` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `credit_card` (
+  `id` varchar(10) NOT NULL,
+  `iban` varchar(35) DEFAULT NULL,
+  `pin` varchar(4) DEFAULT NULL,
+  `cvv` varchar(3) DEFAULT NULL,
+  `expiring_date` varchar(8) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `transaction` (
+  `id` varchar(255) NOT NULL,
+  `credit_card_id` varchar(15) DEFAULT NULL,
+  `company_id` varchar(20) DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  `lat` float DEFAULT NULL,
+  `longitude` float DEFAULT NULL,
+  `timestamp` timestamp NULL DEFAULT NULL,
+  `amount` decimal(10,2) DEFAULT NULL,
+  `declined` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `company_id` (`company_id`),
+  KEY `idx_user_id` (`user_id`),
+  CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `user` (
+  `id` int NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `surname` varchar(100) DEFAULT NULL,
+  `phone` varchar(150) DEFAULT NULL,
+  `email` varchar(150) DEFAULT NULL,
+  `birth_date` varchar(100) DEFAULT NULL,
+  `country` varchar(150) DEFAULT NULL,
+  `city` varchar(150) DEFAULT NULL,
+  `postal_code` varchar(100) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id`) REFERENCES `transaction` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+
