@@ -94,60 +94,33 @@ SELECT * FROM VistaMarketing
 WHERE country = 'Germany';
 
 
+########################################################################################
+######################     NIVEL 3      ################################################
+########################################################################################
+# Sprint 3 - Nivel 3
 
 
-SHOW CREATE TABLE company;
-SHOW CREATE TABLE credit_card;
-SHOW CREATE TABLE transaction;
-SHOW CREATE TABLE user;
+# Exercici 2
+/* L'empresa també et sol·licita crear una vista anomenada "InformeTecnico" que contingui la següent informació:
+ID de la transacció     
+Nom de l'usuari/ària        
+Cognom de l'usuari/ària     
+IBAN de la targeta de crèdit usada.     
+Nom de la companyia de la transacció realitzada.    
+Assegura't d'incloure informació rellevant de totes dues taules i utilitza àlies per a canviar de nom columnes segons sigui necessari.      
+Mostra els resultats de la vista, ordena els resultats de manera descendent en funció de la variable ID de transaction.*/
 
-CREATE TABLE `company` (
-  `id` varchar(15) NOT NULL,
-  `company_name` varchar(255) DEFAULT NULL,
-  `phone` varchar(15) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `country` varchar(100) DEFAULT NULL,
-  `website` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-CREATE TABLE `credit_card` (
-  `id` varchar(10) NOT NULL,
-  `iban` varchar(35) DEFAULT NULL,
-  `pin` varchar(4) DEFAULT NULL,
-  `cvv` varchar(3) DEFAULT NULL,
-  `expiring_date` varchar(8) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-CREATE TABLE `transaction` (
-  `id` varchar(255) NOT NULL,
-  `credit_card_id` varchar(15) DEFAULT NULL,
-  `company_id` varchar(20) DEFAULT NULL,
-  `user_id` int DEFAULT NULL,
-  `lat` float DEFAULT NULL,
-  `longitude` float DEFAULT NULL,
-  `timestamp` timestamp NULL DEFAULT NULL,
-  `amount` decimal(10,2) DEFAULT NULL,
-  `declined` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `company_id` (`company_id`),
-  KEY `idx_user_id` (`user_id`),
-  CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-CREATE TABLE `user` (
-  `id` int NOT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `surname` varchar(100) DEFAULT NULL,
-  `phone` varchar(150) DEFAULT NULL,
-  `email` varchar(150) DEFAULT NULL,
-  `birth_date` varchar(100) DEFAULT NULL,
-  `country` varchar(150) DEFAULT NULL,
-  `city` varchar(150) DEFAULT NULL,
-  `postal_code` varchar(100) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id`) REFERENCES `transaction` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
+CREATE VIEW InformeTecnico  AS 
+SELECT transaction.id		 AS	 "ID de la transacció",
+		user.name			 AS  "Nom usuari/ària" ,
+		user.surname 		 AS  "Cognom usuari/ària",
+		credit_card.iban 	 AS  "IBAN targeta crèdi",
+		company.company_name  AS  "Nom companyia transacció"
+FROM   transaction
+JOIN   user 			ON		user.id 		= transaction.user_id
+JOIN   credit_card		ON		credit_card.id 	= transaction.credit_card_id
+JOIN   company			ON		company.id 		= transaction.company_id
+ORDER BY  transaction.id DESC;
+SELECT * FROM InformeTecnico
 
 

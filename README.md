@@ -59,3 +59,8 @@ Filtra la vista VistaMarketing per a mostrar només les companyies que tenen el 
 # Exercici 1
 
 La setmana vinent tindràs una nova reunió amb els gerents de màrqueting. Un company del teu equip va realitzar modificacions en la base de dades, però no recorda com les va realitzar. Et demana que l'ajudis a deixar els comandos executats per a obtenir les següents modificacions (s'espera que realitzin 6 canvis):
+
+
+
+
+
