@@ -121,6 +121,7 @@ JOIN   user 			ON		user.id 		= transaction.user_id
 JOIN   credit_card		ON		credit_card.id 	= transaction.credit_card_id
 JOIN   company			ON		company.id 		= transaction.company_id
 ORDER BY  transaction.id DESC;
+
 SELECT * FROM InformeTecnico
 
 
