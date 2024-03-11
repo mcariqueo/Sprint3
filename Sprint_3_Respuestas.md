@@ -30,8 +30,6 @@ La nueva tabla debe ser capaz de identificar de forma única cada tarjeta y esta
 
 ![logo](files_sprint3/S3N1E1.png)
 
-
-
 ### Observaciones: 
 1. En _**transaction**_ tengo el dato de credit_card_id, a traves de esto puedo generar una tabla que me permita tener un id unico para relacionar los datos 
 
@@ -50,6 +48,7 @@ Voy a identificar el dato mediante el comando:
 SELECT id, iban  FROM credit_card WHERE id = "CcU-2938";
 ```
 El output es:
+
 ![](files_sprint3/S3N1E2a.png)
 
 ### Paso 2
