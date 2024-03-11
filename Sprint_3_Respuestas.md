@@ -106,7 +106,7 @@ where id ="108B1D1D-5B23-A76C-55EF-C568E49A99DD"
 ```
 EL OUTPUT ES:
 
-![LOGO](files_sprint3/S3N1E3b.png)
+![](files_sprint3/S3N1E3b.png)
 
 
 ## Exercici 4
