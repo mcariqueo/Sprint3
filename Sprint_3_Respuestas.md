@@ -28,7 +28,7 @@ CREATE TABLE credit_card (
 ```
 La nueva tabla debe ser capaz de identificar de forma única cada tarjeta y establecer una relación adecuada con las otras dos tablas ("transaction" y "company"). 
 
-![logo](files_sprint3\S3N1E1.png)
+![logo](files_sprint3/S3N1E1.png)
 
 
 
@@ -50,7 +50,7 @@ Voy a identificar el dato mediante el comando:
 SELECT id, iban  FROM credit_card WHERE id = "CcU-2938";
 ```
 El output es:
-![](files_sprint3\S3N1E2a.png)
+![](files_sprint3/S3N1E2a.png)
 
 ### Paso 2
 Ahora reemplazo a traves del siguiente comando: 
@@ -79,7 +79,7 @@ Verificar los campos de la tabla transaccion para generar el comando de insertar
 ```sql
 SHOW COLUMNS FROM transaction;
 ```
-![](files_sprint3\S3N1E3a.png)
+![](files_sprint3/S3N1E3a.png)
 
 ### Paso 2:  
 
@@ -144,7 +144,7 @@ WHERE   id = (
 # una vez hecho esto puedo eliminar el dato segùn lo solicitado:
 DELETE FROM transaction WHERE id = '02C6201E-D90A-1859-B4EE-88D2986D3B02';
 ```
-![](files_sprint3\S3N2E1.png)
+![](files_sprint3/S3N2E1.png)
 
 
 ## Exercici 2
