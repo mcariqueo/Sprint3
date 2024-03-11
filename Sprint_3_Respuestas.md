@@ -2,7 +2,6 @@
 
 ## Exercici 1
 
-
 ### Diseño de tabla
 
 En primer lugar, debo crear la tabla _**user**_ con los respectivos datos entregados: 
@@ -29,7 +28,7 @@ CREATE TABLE credit_card (
 ```
 La nueva tabla debe ser capaz de identificar de forma única cada tarjeta y establecer una relación adecuada con las otras dos tablas ("transaction" y "company"). 
 
-![logo](files_sprint3/relaciones.png)
+![logo](files_sprint3\S3N1E1.png)
 
 
 
@@ -51,11 +50,7 @@ Voy a identificar el dato mediante el comando:
 SELECT id, iban  FROM credit_card WHERE id = "CcU-2938";
 ```
 El output es:
-
-|  id      | iban                       |
-|----------|----------------------------|
-| CcU-2938 | TR301950312213576817638661 |
-
+![](files_sprint3\S3N1E2a.png)
 
 ### Paso 2
 Ahora reemplazo a traves del siguiente comando: 
@@ -72,7 +67,7 @@ SELECT id, iban  FROM credit_card WHERE id = "CcU-2938";
 ```
 El output es el siguiente: 
 
-![logo](files_sprint3/ex2.png)
+![logo](files_sprint3/S3N1E2b.png)
 
 ## Exercici 3
 
@@ -84,18 +79,7 @@ Verificar los campos de la tabla transaccion para generar el comando de insertar
 ```sql
 SHOW COLUMNS FROM transaction;
 ```
-
-| Field           | Type            | Null | Key | Default | Extra |
-|-----------------|-----------------|------|-----|---------|-------|
-| id              | varchar(255)    | NO   | PRI | NULL    |       |
-| credit_card_id  | varchar(15)     | YES  |     | NULL    |       |
-| company_id      | varchar(20)     | YES  | MUL | NULL    |       |
-| user_id         | int             | YES  | MUL | NULL    |       |
-| lat             | float           | YES  |     | NULL    |       |
-| longitude       | float           | YES  |     | NULL    |       |
-| timestamp       | timestamp       | YES  |     | NULL    |       |
-| amount          | decimal(10,2)   | YES  |     | NULL    |       |
-| declined        | tinyint(1)      | YES  |     | NULL    |       |
+![](files_sprint3\S3N1E3a.png)
 
 ### Paso 2:  
 
@@ -122,7 +106,7 @@ where id ="108B1D1D-5B23-A76C-55EF-C568E49A99DD"
 ```
 EL OUTPUT ES:
 
-![LOGO](files_sprint3/N1E3.png)
+![LOGO](files_sprint3/S3N1E3b.png)
 
 
 ## Exercici 4
@@ -134,7 +118,7 @@ alter table credit_card drop column pan;
 ```
 El resultado es el siguiente:
 
-![logo](files_sprint3/n1e4.png)
+![logo](files_sprint3/S3N1E4.png)
 
 En este output vemos como el campo "pan" ya no esta en la tabla _**credit_card**_
 
@@ -147,14 +131,10 @@ En este output vemos como el campo "pan" ya no esta en la tabla _**credit_card**
 DELETE FROM transation where id = "02C6201E-D90A-1859-B4EE-88D2986D3B02";
 ```
 Al alplicar este código, el sistema devuelve el siguiente error: 
-
+```
 Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails (`transactions`.`user`, CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id`) REFERENCES `transaction` (`user_id`))
-
-### Opcion 1: 
-Desactivar el contraint que esta bloqueando el delete en la base de datos: **No se como hacerlo**
-
-### Opcion 2:
-Borrar el dato primero de user y despues de transaction: Esto lo puedo haer mediante una subquery:
+```
+Para ello puedo borrar el dato primero de user y despues de transaction: Esto lo puedo haer mediante una subquery:
 ```sql
 DELETE FROM user 
 WHERE   id = (
@@ -164,6 +144,8 @@ WHERE   id = (
 # una vez hecho esto puedo eliminar el dato segùn lo solicitado:
 DELETE FROM transaction WHERE id = '02C6201E-D90A-1859-B4EE-88D2986D3B02';
 ```
+![](files_sprint3\S3N2E1.png)
+
 
 ## Exercici 2
 
@@ -186,7 +168,7 @@ SELECT * FROM VistaMarketing;
 
 Tambien es posible ver la vista desde el panel de "schema"
 
-![logo](files_sprint3/N2E2.png)
+![logo](files_sprint3/S3N2E2.png)
 
 
 ## Exercici 3
@@ -199,7 +181,7 @@ WHERE country = 'Germany';
 ```
 
 La tabla entregada es: 
-![logo](files_sprint3/N2E3.png)
+![logo](files_sprint3/S3N2E3.png)
 
 
 # Sprint 3 - Nivell 3
@@ -208,27 +190,16 @@ La tabla entregada es:
 
 La próxima semana tendrás una nueva reunión con los gerentes de marketing. Un compañero de tu equipo realizó modificaciones en la base de datos, pero no recuerda cómo las hizo. 
 
-Te pide que lo ayudes a obtener los comandos ejecutados para realizar los siguientes cambios (se esperan que se realicen 6 cambios)
 
 | n | tabla         | Descripcion cambio                                         | Comando utilizado                                            |
 |---|---------------|------------------------------------------------------------|--------------------------------------------------------------|
 | 1 | credit_card   | Agregado un campo llamado _fecha_actual_ tipo **date**     | ```ALTER TABLE credit_card ADD fecha_actual DATE; ```        |
 | 2 | company       | Elimina el campo **website**                               | ```ALTER TABLE company DROP COLUMN website;```               |
-| 3 | credit_card   | Cambia  tipo de variable de _cvv_ de **varchar** a **int** |
+| 3 | credit_card   | Cambia  tipo de variable de _cvv_ de **varchar** a **int** |```ALTER TABLE alter table credit_Card modify cvv int```
 
 
 
 ## Exercici 2
-L'empresa també et sol·licita crear una vista anomenada "InformeTecnico" que contingui la següent informació:
 
-ID de la transacció     
-Nom de l'usuari/ària        
-Cognom de l'usuari/ària     
-IBAN de la targeta de crèdit usada.     
-Nom de la companyia de la transacció realitzada.    
-Assegura't d'incloure informació rellevant de totes dues taules i utilitza àlies per a canviar de nom columnes segons sigui necessari.      
-
-Mostra els resultats de la vista, ordena els resultats de manera descendent en funció de la variable ID de transaction.
-
-![](files_sprint3/N3E2a.png)
-![](files_sprint3/N3E2b.png)
+![](files_sprint3/S3N3E2a.png)
+![](files_sprint3/S3N3E2b.png)
