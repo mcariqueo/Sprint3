@@ -9,28 +9,17 @@ Es requereix actualitzar la informació que identifica un compte bancari a nivel
 /*Voy a identificar el dato: */
 SELECT * FROM credit_card WHERE id = "CcU-2938";
 
+
 /* Ahora debo rremplazar, esto quiere decir, alterar la tabla credit_card*/
 update credit_card set iban = 'TR323456312213576817699999' where id = "CcU-2938";
 SELECT id, iban  FROM credit_card WHERE id = "CcU-2938";
+
 
 ### Exercici 3
 
 /*En la taula "transaction" ingressa un nou usuari amb la següent informació:*/
 # Paso 1: verificar los campos de la tabla transaccion para generar el comando de insertar:
 	SHOW COLUMNS FROM transaction;
-			/* Tabla Trasaction
-			| Field           | Type            | Null | Key | Default | Extra |
-			|-----------------|-----------------|------|-----|---------|-------|
-			| id              | varchar(255)    | NO   | PRI | NULL    |       |
-			| credit_card_id  | varchar(15)     | YES  |     | NULL    |       |
-			| company_id      | varchar(20)     | YES  | MUL | NULL    |       |
-			| user_id         | int             | YES  | MUL | NULL    |       |
-			| lat             | float           | YES  |     | NULL    |       |
-			| longitude       | float           | YES  |     | NULL    |       |
-			| timestamp       | timestamp       | YES  |     | NULL    |       |
-			| amount          | decimal(10,2)   | YES  |     | NULL    |       |
-			| declined        | tinyint(1)      | YES  |     | NULL    |       |
-			*/
 
 # Paso 2:  
 /* Para ingresar lo que pide el enunciado debo utilizar este codigo:
