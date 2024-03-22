@@ -4,7 +4,7 @@
 
 ### Diseño de tabla
 
-En primer lugar, debo crear la tabla _**user**_ con los respectivos datos entregados: 
+En primer lugar, debo crear la tabla _**credit_card**_ con los respectivos datos entregados: 
 
 | Field          | Type          | Key  | 
 |----------------|---------------|------|
