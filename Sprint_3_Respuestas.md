@@ -1,48 +1,14 @@
-# Sprint 3 - Nivel 1
-
-## Exercici 1
-
-### Diseño de tabla
-
-En primer lugar, debo crear la tabla _**credit_card**_ con los respectivos datos entregados: 
-
-| Field          | Type          | Key  | 
-|----------------|---------------|------|
-| id             |  varchar(10)  |  PK  |  
-| iban           |  varchar(30)  |      |
-| pan            |  varchar(15)  |      |
-| pin            |  varchar(10)  |      |
-| cvv            |  varchar(5)   |      |
-| expiring_date  |  date         |      |
-
-El codigo de creación de la tabla es el siguiente: 
-
-```sql
-CREATE TABLE credit_card (
-    id   	 varchar(10) PRIMARY KEY, # Defino la PK
-    iban 	 varchar(30),
-    pan 	 varchar(15),
-    pin 	 varchar(10),
-    cvv 	 varchar(5),
-    expiring_date date );
-```
-La nueva tabla debe ser capaz de identificar de forma única cada tarjeta y establecer una relación adecuada con las otras dos tablas ("transaction" y "company"). 
-
-![logo](files_sprint3/S3N1E1.png)
-
-### Observaciones: 
-1. En _**transaction**_ tengo el dato de credit_card_id, a traves de esto puedo generar una tabla que me permita tener un id unico para relacionar los datos 
-
-2. La relación entre las tablas  user, credit_card, company es de 1:n respecto a transaction.
-
 
 
 ## Exercici 2
+
 El departament de Recursos Humans ha identificat un error en el número de compte de l'usuari amb el:
 - IBAN CcU-2938. 
 - Es requereix actualitzar la informació que identifica un compte bancari a nivell internacional (identificat com 
--"IBAN"): TR323456312213576817699999. 
+-"IBAN"): TR323456312213576817699999
+
 ### Paso 1
+
 Voy a identificar el dato mediante el comando:
 ```sql
 SELECT id, iban  FROM credit_card WHERE id = "CcU-2938";
@@ -201,4 +167,5 @@ La próxima semana tendrás una nueva reunión con los gerentes de marketing. Un
 ## Exercici 2
 
 ![](files_sprint3/S3N3E2a.png)
+
 ![](files_sprint3/S3N3E2b.png)
