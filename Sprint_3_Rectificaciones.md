@@ -12,7 +12,7 @@
 
 ![](files_sprint3/S3N1E1a.png)
 
-1. identifico las primary key de todas las tablas: 
+2. identifico las primary key de todas las tablas: 
    
 |   Table   |transaction|company|credit_card|
 |       -   |    -      |   -   |    -      |
@@ -20,7 +20,7 @@
 
 2. Realizo un CREATE INDEX para transaction para poder generar posteriormente los foreing key.
    
-![](files_sprint3/S3N1E1b.png )----
+![](files_sprint3/S3N1E1b.png )
 
 3. Agrego los datos de "dades_introduir_credit" a la credit_card segun lo indicado:
 
@@ -36,6 +36,10 @@
 5. Finalmente obtengo la relacion de las tres tablas: 
 
 ![](files_sprint3/S3N1E1.png)
+
+
+Relaciones:
+- En el caso de company y transaction la relación en 1:N, esto debido a que es posible que una misma compania tenga varias transacciones asociadas. Lo mismo pasa con credit_card y transation, ya que una misma tarjeta puede terner asociadas varias transacciones.
 
 
 
@@ -94,7 +98,7 @@ En la taula "transaction" ingressa un nou usuari amb la següent informació:
 ![](files_sprint3/S3N1E3b.png)
 
 3. Inserto los datos en transaction. Como no se entrega una fecha, genero una fecha en ese lugar mediante NOW()
-4. 
+
 ![](files_sprint3/S3N1E3c.png)
 
 
@@ -112,6 +116,7 @@ En este output vemos como el campo "pan" ya no esta en la tabla _**credit_card**
 # Sprint 3 - Nivel 2
 
 ## Exercici 1
+
 Elimina de la taula transaction el registre amb ID 02C6201E-D90A-1859-B4EE-88D2986D3B02 de la base de dades
 
 ![](files_sprint3/S3N2E1.png)
@@ -160,12 +165,12 @@ La tabla entregada es:
 
 ![](files_sprint3/S3N3E1b.png)
 
-3. Corrigo la relación de las constrain  quitando el foreing key de la tabla user:
+3. Corrigo la relación de las constrain quitando el foreing key de la tabla user. Para ello lo primero es borra la tabla (DROP TABLE) y posteriormente crearla nuevamente.
 
 ![](files_sprint3/S3N3E1c.png)
 
 
-4. Agrego los datos
+1. Agrego los datos
 
 ![](files_sprint3/S3N3E1d.png)
 
@@ -182,11 +187,13 @@ En rojo indico las diferencias entre la tabla obtenida y la tabla entregada.
 ![](files_sprint3/S3N3E1.png)
 
 Estos son aguos cambios:
-| # | Tabla         | Descripción del Cambio                                      | Comando Utilizado               |
-|---|---------------|--------------------------------------------------------------|---------------------------------|
-| 1 | credit_card   | Agrega "fecha_actual" de tipo DATE                          | ALTER TABLE credit_card ADD fecha_actual DATE;   |
-| 2 | company       | Elimina "website"                                           | ALTER TABLE company DROP COLUMN website;         |
-| 3 | credit_card   | Cambia tipo de "cvv" de VARCHAR a INT                       | ALTER TABLE credit_card MODIFY cvv INT;           |
+| # | Tabla         | Descripción del Cambio                    | Comando Utilizado                             |
+|---|---------------|-------------------------------------------|-----------------------------------------------|
+| 1 | credit_card   | Agrega "fecha_actual" de tipo DATE        | ALTER TABLE credit_card ADD fecha_actual DATE;|
+| 2 | company       | Elimina "website"                         | ALTER TABLE company DROP COLUMN website;      |
+| 3 | credit_card   | Cambia tipo de "cvv" de VARCHAR a INT     | ALTER TABLE credit_card MODIFY cvv INT;       |
+| 4 | user          | cambiar el nombre del campo               | ALTER TABLE user CHANGE email personal_mail   |
+| 5 | user          | cambiar el nombre de tabla                | ALTER TABLE user RENAME TO data_user          | 
 
 
 ## Exercici 2
